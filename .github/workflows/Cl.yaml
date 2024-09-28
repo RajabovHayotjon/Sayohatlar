@@ -31,6 +31,5 @@ jobs:
           SECRET_KEY: ${{secrets.SECRET_KEY}}
           DEBUG: ${{secrets.DEBUG}}
 
-      - name: Run tests
         run: |
-            pytest
+          python manage.py test

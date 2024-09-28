@@ -97,13 +97,6 @@ class Tour(BaseModel):
     class Meta:
         ordering = ('-id', )
 
-class TourReview(BaseModel):
-    name = models.CharField(max_length=200, blank=True, null=True)
-    email = models.EmailField()
-    rating = models.PositiveSmallIntegerField(default=1)
-    body = models.TextField()
-    tour = models.ForeignKey(Tour, models.CASCADE, related_name='reviews')
-
 
 class Food(BaseModel):
     has_breakfast = models.BooleanField(default=True)
@@ -116,3 +109,11 @@ class Food(BaseModel):
 
     tour = models.OneToOneField(
         Tour, on_delete=models.CASCADE, related_name='food')
+
+
+class TourReview(BaseModel):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField()
+    rating = models.PositiveSmallIntegerField(default=1)
+    body = models.TextField()
+    tour = models.ForeignKey(Tour, models.CASCADE, related_name='reviews')
