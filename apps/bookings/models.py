@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from apps.main.models import BaseModel
 from apps.tours.models import Tour
 
-
-
 class StatusChoices(models.TextChoices):
     PENDING = 'PENDING', 'Pending'
     CONFIRMED = 'CONFIRMED', 'Confirmed'
@@ -16,7 +14,6 @@ class StatusChoices(models.TextChoices):
     REFUNDED = 'REFUNDED', 'Refunded'
     COMPLETED = 'COMPLETED', 'Completed'
     FAILED = 'FAILED', 'Failed'
-
 
 class Booking(BaseModel):
     tour = models.ForeignKey(Tour, models.SET_NULL, blank=True, null=True)
