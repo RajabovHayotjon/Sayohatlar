@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 from apps.main.models import BaseModel
 from apps.tours.models import Tour
+
 
 
 class StatusChoices(models.TextChoices):
