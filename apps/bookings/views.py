@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 
 from apps.bookings.models import Booking
 from apps.tours.models import Tour

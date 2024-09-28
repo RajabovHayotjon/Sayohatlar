@@ -38,7 +38,8 @@ class Destination(BaseModel):
         try:
             tours = self.tours.order_by('price')
             return tours.first().price
-        except:
+        except Exception as e:
+            print(f"{e}")
             return 0
 
     class Meta:
@@ -84,7 +85,6 @@ class Tour(BaseModel):
     def __str__(self):
         return self.name
 
-
     @property
     def rating(self):
         reviews = self.reviews.all()
@@ -93,8 +93,6 @@ class Tour(BaseModel):
         rating_sum = reviews.aggregate(models.Sum('rating'))
         rating = rating_sum['rating__sum'] / len(reviews)
         return rating
-        
-        
 
     class Meta:
         ordering = ('-id', )

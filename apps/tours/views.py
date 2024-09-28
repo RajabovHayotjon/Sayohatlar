@@ -1,11 +1,8 @@
 from typing import Any
 from django.shortcuts import render
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from django_filters.views import FilterView
 from apps.tours.filters import TourFilter
 from apps.tours.models import Country, Destination, Hotel, Tour
-from apps.tours.serializers import TourSerializer
 
 
 def destinations(request):
@@ -45,7 +42,7 @@ class TurView(FilterView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        search = self.request.GET.get('search',None)
+        search = self.request.GET.get('search', None)
         if search:
             qs = qs.filter(name__contains=search)
         return qs

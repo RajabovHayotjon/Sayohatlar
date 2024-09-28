@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.urls import reverse_lazy
 
@@ -15,7 +15,6 @@ def login_user(request):
             return redirect(reverse_lazy('home'))
         else:
             messages.add_message(request, messages.WARNING, "Parol yoki username noto'g'ri")
-
 
     return render(request, 'accounts/login.html')
 
