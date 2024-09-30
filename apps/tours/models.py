@@ -43,7 +43,7 @@ class Destination(BaseModel):
             return 0
 
     class Meta:
-        ordering = ('-id', )
+        ordering = ('-id',)
 
 
 class HotelFacility(BaseModel):
@@ -95,7 +95,7 @@ class Tour(BaseModel):
         return rating
 
     class Meta:
-        ordering = ('-id', )
+        ordering = ('-id',)
 
 
 class Food(BaseModel):

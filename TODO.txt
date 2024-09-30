@@ -10,4 +10,4 @@ Modellar:
     -- Country - name
     -- Destination - name, country
     -- Tour - name, description, destinations, countries, price, image
-
+    -- Hello world
