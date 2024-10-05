@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 from apps.tours.models import Category, Destination, Tour
 
 
