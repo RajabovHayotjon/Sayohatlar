@@ -72,5 +72,5 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          ssh root@143.198.183.137 "cd ../home/sayohatlar && git pull && ./deploy.sh"
+          ssh root@104.248.115.32 "cd ../home/sayohatlar && git pull && ./deploy.sh"
         shell: bash
