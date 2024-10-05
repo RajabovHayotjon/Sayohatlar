@@ -2,7 +2,7 @@ name: Sayohatlar Backend
 
 on:
   push:
-    banches:
+    branches:
       - main
 
   pull_request:
