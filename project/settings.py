@@ -67,12 +67,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-if not DEBUG:
-    ind = INSTALLED_APPS.index("django.contrib.staticfiles")
-    INSTALLED_APPS.insert(ind, "whitenoise.runserver_nostatic")
-
-    ind = MIDDLEWARE.index("django.middleware.security.SecurityMiddleware")
-    MIDDLEWARE.insert(ind + 1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 ROOT_URLCONF = 'project.urls'
 
@@ -157,19 +151,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'staticfiles')
 ]
-
-if not DEBUG:
-    STORAGES = {
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-        },
-    }
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -180,7 +166,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS-HEADERS
 CORS_ALLOWED_ORIGINS = [
-    '*',
+    'http://localhost',
+    'http://127.0.0.1',
 ]
 
 CORS_ALLOW_METHODS = [
