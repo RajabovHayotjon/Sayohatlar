@@ -67,6 +67,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+if not DEBUG:
+    ind = INSTALLED_APPS.index("django.contrib.staticfiles")
+    INSTALLED_APPS.insert(ind, "whitenoise.runserver_nostatic")
+
+    ind = MIDDLEWARE.index("django.middleware.security.SecurityMiddleware")
+    MIDDLEWARE.insert(ind + 1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 ROOT_URLCONF = 'project.urls'
 
@@ -156,6 +162,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles')
 ]
+
+if not DEBUG:
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
